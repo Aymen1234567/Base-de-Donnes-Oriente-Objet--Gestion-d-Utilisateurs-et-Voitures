@@ -1,5 +1,7 @@
 Base de Données Orientée Objet - Gestion d'Utilisateurs et Voitures
+
 Description
+
 Ce projet est une application client-serveur multi-utilisateurs développée en Java, permettant la gestion d'utilisateurs et de leurs voitures. Elle assure la persistance des données via des fichiers texte (utilisateurs.txt et voitures.txt) et gère la concurrence entre plusieurs clients connectés simultanément. Le serveur centralise les données et communique avec les clients via des sockets TCP sur le port 12345.
 L'objectif principal est de démontrer les principes d'une base de données orientée objet, avec inscription/connexion des utilisateurs, ajout/liste/modification/suppression de voitures, et synchronisation des accès pour éviter les corruptions de données.
 Projet réalisé dans le cadre du cours IE-I4 (Année 2024-2025).
