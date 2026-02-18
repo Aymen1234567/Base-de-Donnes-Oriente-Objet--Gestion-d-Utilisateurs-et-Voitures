@@ -96,6 +96,10 @@ Le serveur centralise les données et communique avec les clients via **sockets 
 
 ```bash
 javac *.java
+
+
+
+
 ###🔹 Lancer le serveur
 java Serveur
 
