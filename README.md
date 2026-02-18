@@ -96,13 +96,13 @@ Le serveur centralise les données et communique avec les clients via **sockets 
 
 ```bash
 javac *.java
-🔹 Lancer le serveur
+###🔹 Lancer le serveur
 java Serveur
 
-🔹 Lancer un ou plusieurs clients
+### 🔹 Lancer un ou plusieurs clients
 java Client
 
-🔹 Exemple de scénario
+## 🔹 Exemple de scénario
 
 Démarrage du serveur : Serveur actif sur le port 12345
 
