@@ -1,81 +1,155 @@
-Base de Données Orientée Objet - Gestion d'Utilisateurs et Voitures
+⚡ Base de Données Orientée Objet – Gestion d’Utilisateurs et Voitures
 
-Description
+Projet de gestion client-serveur multi-utilisateurs développé en Java, démontrant les principes d’une base de données orientée objet avec persistance et gestion de la concurrence.
 
-Ce projet est une application client-serveur multi-utilisateurs développée en Java, permettant la gestion d'utilisateurs et de leurs voitures. Elle assure la persistance des données via des fichiers texte (utilisateurs.txt et voitures.txt) et gère la concurrence entre plusieurs clients connectés simultanément. Le serveur centralise les données et communique avec les clients via des sockets TCP sur le port 12345.
-L'objectif principal est de démontrer les principes d'une base de données orientée objet, avec inscription/connexion des utilisateurs, ajout/liste/modification/suppression de voitures, et synchronisation des accès pour éviter les corruptions de données.
-Projet réalisé dans le cadre du cours IE-I4 (Année 2024-2025).
+📚 Réalisé dans le cadre du cours IE-I4
+🎓 Année universitaire 2024–2025
 
-Fonctionnalités
+🧩 Présentation du projet
 
-Inscription : Création d'un utilisateur avec nom et mot de passe ; génération d'un ID unique.
-Connexion : Authentification via ID et mot de passe.
-Gestion des voitures :
-Ajout d'une voiture (nom, modèle, année).
-Liste des voitures d'un utilisateur (avec indices).
-Modification d'une voiture par indice.
-Suppression d'une voiture par indice.
+L’objectif est de créer une application client-serveur permettant de gérer des utilisateurs et leurs voitures, avec :
 
-Persistance : Données stockées dans des fichiers texte, chargées au démarrage et mises à jour après chaque opération.
-Concurrence : Utilisation de verrous (synchronized) pour gérer les accès simultanés et éviter les connexions multiples sur le même compte.
-Interface en ligne de commande pour le client.
+Inscription et authentification des utilisateurs
 
-Architecture
-L'application suit une architecture client-serveur :
+Gestion complète des voitures (ajout, liste, modification, suppression)
 
-Serveur : Écoute les connexions, crée un thread par client (GestionnaireClient), gère les données via GestionnaireUtilisateursEtVoitures.
-Client : Interface CLI pour envoyer des requêtes (ex. : SIGN_UP, ADD_CAR) et afficher les réponses.
-Structures en mémoire :
-Utilisateurs : Map<Integer, Utilisateur> (clé : ID).
-Voitures : Map<Integer, List<Voiture>> (clé : ID utilisateur).
+Persistance des données dans des fichiers texte (utilisateurs.txt et voitures.txt)
 
-Structures sur disque :
-utilisateurs.txt : Format id,nomUtilisateur,motDePasse (ex. : 1,aymen,123).
-voitures.txt : Format id,voiture1;voiture2 où chaque voiture est nom modele annee (ex. : 1,mercedes G-class 2025;Bmw ix3 2024).
+Gestion de la concurrence pour permettre plusieurs clients connectés simultanément
 
-Protocole : Échange de chaînes et objets sérialisés via sockets.
+Interface en ligne de commande (CLI) pour le client
 
-Classes Principales
+Le serveur centralise les données et communique avec les clients via sockets TCP sur le port 12345.
 
-Utilisateur : ID, nomUtilisateur, motDePasse. Implémente Serializable.
-Voiture : nom, modele, annee. Implémente Serializable.
-GestionnaireUtilisateursEtVoitures : Gère les maps, persistance (charger/sauvegarder), et opérations synchronisées.
-Fonctions : Interface pour appeler les méthodes du gestionnaire.
-Client : Interface CLI avec menu interactif.
-GestionnaireClient : Thread par client, traite les commandes (SIGN_UP, SIGN_IN, ADD_CAR, etc.).
-Serveur : Lance le serveur et accepte les connexions.
+🎮 Fonctionnalités principales
+👤 Gestion des utilisateurs
 
-Installation et Configuration
+Inscription avec génération d’un ID unique
 
-Assurez-vous d'avoir Java installé (JDK 8+ recommandé).
-Clonez le dépôt (si disponible) ou copiez les sources.
-Compilez les classes : javac *.java.
-Lancez le serveur : java Serveur.
-Lancez un ou plusieurs clients : java Client.
+Connexion sécurisée via ID et mot de passe
 
-Utilisation
-Exemple de Scénario
+Accès synchronisé pour éviter les connexions multiples sur un même compte
 
-Démarrez le serveur : Serveur démarré sur le port 12345.
-Lancez le client et inscrivez-vous :
-Choix : 1 (S'inscrire).
-Nom : "alice", Mot de passe : "pass123".
-Réponse : "Utilisateur ajouté avec l'ID 1".
+🚗 Gestion des voitures
 
-Connectez-vous :
-Choix : 2 (Se connecter).
-ID : 1, Mot de passe : "pass123".
-Menu gestion voitures apparaît.
+Ajout d’une voiture (nom, modèle, année)
 
-Ajoutez une voiture :
-Choix : 1, Nom : "Toyota", Modèle : "Corolla", Année : 2020.
-Réponse : "Voiture ajoutée avec succès".
+Liste des voitures d’un utilisateur avec indices
 
-Listez les voitures : Choix 2 → Affiche la liste avec indices.
-Modifiez/Supprimez : Utilisez les indices pour cibler une voiture.
-Déconnectez-vous : Choix 5.
+Modification d’une voiture existante via son indice
 
-Les données sont persistées dans les fichiers après chaque opération.
-Fichiers de données (utilisateurs.txt, voitures.txt) seront créés automatiquement si absents.
+Suppression d’une voiture via son indice
 
-Dépendances : Aucune bibliothèque externe ; utilise uniquement les API Java standard (sockets, I/O, collections).
+💾 Persistance
+
+Données stockées dans des fichiers texte
+
+Chargement au démarrage et sauvegarde automatique après chaque opération
+
+🔄 Concurrence
+
+Accès aux données synchronisés avec synchronized
+
+Support multi-utilisateurs sans corruption des données
+
+🗂️ Architecture
+
+Client-serveur avec threads pour gérer la concurrence :
+
+Serveur :
+
+Écoute les connexions entrantes
+
+Crée un thread par client (GestionnaireClient)
+
+Gère les données via GestionnaireUtilisateursEtVoitures
+
+Client :
+
+Interface CLI interactive
+
+Envoie les commandes (ex. : SIGN_UP, ADD_CAR)
+
+Affiche les réponses du serveur
+
+Structures de données :
+
+En mémoire :
+
+Map<Integer, Utilisateur> pour les utilisateurs
+
+Map<Integer, List<Voiture>> pour les voitures par utilisateur
+
+Sur disque :
+
+utilisateurs.txt : id,nomUtilisateur,motDePasse
+
+voitures.txt : id,voiture1;voiture2 avec chaque voiture nom modele annee
+
+Protocole : Échange de chaînes et objets sérialisés via sockets TCP
+
+🛠️ Classes principales
+Classe	Description
+Utilisateur	ID, nomUtilisateur, motDePasse. Implémente Serializable.
+Voiture	Nom, modèle, année. Implémente Serializable.
+GestionnaireUtilisateursEtVoitures	Gère les maps, persistance et opérations synchronisées.
+Fonctions	Interface pour appeler les méthodes du gestionnaire.
+Client	Interface CLI pour les utilisateurs.
+GestionnaireClient	Thread par client, traite les commandes.
+Serveur	Lance le serveur et accepte les connexions.
+🧭 Utilisation
+💻 Installation
+
+Assurez-vous d’avoir Java JDK 8+
+
+Compilez les classes :
+
+javac *.java
+
+
+Lancez le serveur :
+
+java Serveur
+
+
+Lancez un ou plusieurs clients :
+
+java Client
+
+🔹 Exemple de scénario
+
+Démarrage du serveur : Serveur actif sur le port 12345
+
+Inscription client :
+
+Choix : 1 (S’inscrire)
+
+Nom : alice, Mot de passe : pass123
+
+Réponse : Utilisateur ajouté avec l’ID 1
+
+Connexion client :
+
+Choix : 2 (Se connecter)
+
+ID : 1, Mot de passe : pass123
+
+Menu gestion voitures apparaît
+
+Ajout d’une voiture :
+
+Choix : 1, Nom : Toyota, Modèle : Corolla, Année : 2020
+
+Réponse : Voiture ajoutée avec succès
+
+Liste / modification / suppression : Utilisez les indices pour gérer vos voitures
+
+Déconnexion : Choix 5
+
+Les fichiers utilisateurs.txt et voitures.txt sont mis à jour automatiquement
+
+⚙️ Dépendances
+
+Java standard API : Sockets, I/O, Collections
+
+Aucune bibliothèque externe requise
