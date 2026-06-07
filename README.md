@@ -1,5 +1,5 @@
 # ⚡ Base de Données Orientée Objet – Gestion d’Utilisateurs et Voitures
-
+### Projet académique (L2 informatique-électronique)
 Projet de **gestion client-serveur multi-utilisateurs** développé en **Java**, démontrant les principes d’une **base de données orientée objet** avec persistance et gestion de la concurrence.
 
 📚 Réalisé dans le cadre du cours **IE-I4**  
